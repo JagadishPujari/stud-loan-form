@@ -1,0 +1,28 @@
+.copyrights{
+    font-size: 12px !important;
+    width: 100%
+}
+.privacy {
+    font-size: 12px !important;
+    color: white !important;
+}
+.privacy-link{
+    list-style-type: none;
+}
+.inline-link{
+    display: inline-block;
+    padding: 10px;
+    margin-top: 5px
+}
+.nav-tool-items{
+    width: 100%;
+    text-align: center;
+}
+.logo{
+    float: left;
+}
+.new-niit-logo {
+    width: 85px;
+    /* margin-top: -31px;
+    padding-bottom: 10px; */
+}
