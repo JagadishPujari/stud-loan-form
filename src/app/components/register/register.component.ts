@@ -29,31 +29,30 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.form = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(4)]],
-      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      phone: [null, [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-      amount: [null, [Validators.required, Validators.pattern(/^\d{4,100}$/)]],
+      Name: [null, [Validators.required, Validators.minLength(4)]],
+      Email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      Mobile_No: [null, [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      Amount: [null, [Validators.required, Validators.pattern(/^\d{4,100}$/)]],
       recaptcha :[Validators.required]
     });
   }
   public resolved(captchaResponse: string): void {
-    // console.log(`Resolved captcha with response: ${captchaResponse}`);
     this.token = captchaResponse;
   }
   registerStudent() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://qa.training.com/',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     });
-    const body = this.form.value;
     delete this.form.value.recaptcha;
-    this.httpClient.post<any>('https://qa.training.com/D365TestAPI/api/SaveCustomerDetails', body, { headers }).subscribe(data => {
+    var formData = [];
+    formData.push(this.form.value);
+    this.httpClient.post<any>('https://qa.training.com/D365TestAPI/api/SaveCustomerDetails', formData, { headers }).subscribe(data => {
         this.toastr.success('Your application submitted successfully, We will get back to you soon', 'Success');
-        this.form.reset();
+        this.reloadCurrentRoute();
     }, error => {
-      this.reloadCurrentRoute();
       this.toastr.error('Something went wrong', 'Failed');
     })
   }

@@ -11,17 +11,17 @@
       <form [formGroup]="form" (ngSubmit)="registerStudent()" class="example-form">
           <mat-form-field appearance="standard">
               <mat-label>Full Name</mat-label>
-              <input matInput maxlength="30" inputmode="tel" placeholder="Type name" formControlName="name" #nameInput>
+              <input matInput maxlength="30" inputmode="tel" placeholder="Type name" formControlName="Name" #nameInput>
               <!-- <mat-hint>Mini character 4: {{ nameInput.value.length }}/4</mat-hint> -->
               <mat-error>Name is required</mat-error>
-              <mat-error **ngIf="(form.get('name')).errors?.minlength">
+              <mat-error **ngIf="(form.get('Name')).errors?.minlength">
                   Please enter more than 10 character
               </mat-error>
           </mat-form-field>
   
           <mat-form-field appearance="legacy">
               <mat-label>Email Address:</mat-label>
-              <input matInput type="email" formControlName="email" placeholder="Your email">
+              <input matInput type="email" formControlName="Email" placeholder="Your email">
               <!-- <mat-icon matSuffix>mail_outline</mat-icon> -->
               <!-- <mat-hint>Input the fully qualified email address</mat-hint> -->
               <mat-error>Email is required</mat-error>
@@ -30,18 +30,18 @@
           </mat-form-field>
           <mat-form-field appearance="standard">
             <mat-label>Phone</mat-label>
-            <input matInput maxlength="15" inputmode="tel" placeholder="Type Phone number" formControlName="phone" #phoneInput>
+            <input matInput maxlength="15" inputmode="tel" placeholder="Type Phone number" formControlName="Mobile_No" #phoneInput>
             <!-- <mat-hint>Enter 10 digit Mobile Number 10: {{ phoneInput.value.length }}/10</mat-hint> -->
             <mat-error>Please, Enter 10 digit Mobile Number.</mat-error>
-            <mat-error **ngIf="(form.get('phone')).errors?.minlength">
+            <mat-error **ngIf="(form.get('Mobile_No')).errors?.minlength">
               Please, Enter 10 digit Mobile Number.
             </mat-error>
         </mat-form-field>
         <mat-form-field appearance="standard">
             <mat-label>Amount</mat-label>
-            <input matInput maxlength="15" inputmode="amount" placeholder="Type Amount" formControlName="amount" #amountInput>
+            <input matInput maxlength="15" inputmode="amount" placeholder="Type Amount" formControlName="Amount" #amountInput>
             <mat-error>Please, Enter loan amount more than 1000</mat-error>
-            <mat-error **ngIf="(form.get('amount')).errors?.minlength">
+            <mat-error **ngIf="(form.get('Amount')).errors?.minlength">
               Please, Enter loan amount in number
             </mat-error>
         </mat-form-field>
